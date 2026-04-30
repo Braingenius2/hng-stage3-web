@@ -11,6 +11,8 @@ function CallbackHandler() {
 
   useEffect(() => {
     const code = searchParams.get('code');
+    const state = searchParams.get('state');
+    
     if (!code) {
       setStatus('Error: No authorization code received.');
       return;
@@ -24,7 +26,7 @@ function CallbackHandler() {
             'Content-Type': 'application/json',
             'X-API-Version': '1',
           },
-          body: JSON.stringify({ code }),
+          body: JSON.stringify({ code, state }),
           credentials: 'include',
         });
 
