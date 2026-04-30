@@ -6,7 +6,7 @@ export default function LoginPage() {
   const GITHUB_CLIENT_ID = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || 'PLACEHOLDER_CLIENT_ID';
   const REDIRECT_URI = process.env.NEXT_PUBLIC_REDIRECT_URI || 'http://localhost:3000/auth/callback';
 
-  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=read:user user:email`;
+  const githubAuthUrl = `${API_BASE}/auth/github`;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-950">
