@@ -18,6 +18,13 @@ function CallbackHandler() {
       return;
     }
 
+    // RELAY LOGIC: If this is a CLI login, bridge the code back to localhost
+    if (state && state.startsWith('cli-')) {
+      setStatus('Login successful! Redirecting back to your terminal...');
+      window.location.href = `http://localhost:9876/callback?code=${code}&state=${state}`;
+      return;
+    }
+
     async function exchangeCode() {
       try {
         const response = await fetch(`${API_BASE}/auth/github/callback`, {
